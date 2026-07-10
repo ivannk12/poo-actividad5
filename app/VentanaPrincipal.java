@@ -4,6 +4,8 @@ import java.awt.event.ActionListener;
 import java.io.IOException;
 import java.util.ArrayList;
 import javax.swing.*;
+import javax.swing.event.ListSelectionEvent;
+import javax.swing.event.ListSelectionListener;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -13,7 +15,7 @@ import javax.swing.table.DefaultTableModel;
  * estudiantes se muestran en una tabla.
  * @version 1.0/2026
  */
-public class VentanaPrincipal extends JFrame implements ActionListener {
+public class VentanaPrincipal extends JFrame implements ActionListener, ListSelectionListener {
 
     Container contenedor;
     JLabel etId, etNombre, etPrograma, etEdad, mensaje;
@@ -93,7 +95,7 @@ public class VentanaPrincipal extends JFrame implements ActionListener {
         scroll.setBounds(20, 155, 590, 265);
 
         // Al seleccionar una fila, se cargan sus datos en el formulario
-        tabla.getSelectionModel().addListSelectionListener(evento -> cargarSeleccion());
+        tabla.getSelectionModel().addListSelectionListener(this);
 
         contenedor.add(etId);
         contenedor.add(campoId);
@@ -115,7 +117,8 @@ public class VentanaPrincipal extends JFrame implements ActionListener {
     /**
      * Carga en el formulario los datos de la fila seleccionada en la tabla.
      */
-    private void cargarSeleccion() {
+    @Override
+    public void valueChanged(ListSelectionEvent evento) {
         int fila = tabla.getSelectedRow();
         if (fila >= 0) {
             campoId.setText(modelo.getValueAt(fila, 0).toString());
