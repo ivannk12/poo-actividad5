@@ -1,8 +1,4 @@
-/**
- * Esta clase define el punto de entrada a la aplicacion CRUD de estudiantes
- * sobre archivo.
- * @version 1.0/2026
- */
+// Clase principal: abre la ventana de la aplicacion
 public class Principal {
 
     public static void main(String[] args) {

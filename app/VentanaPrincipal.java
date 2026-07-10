@@ -8,13 +8,9 @@ import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
 import javax.swing.table.DefaultTableModel;
 
-/**
- * Esta clase denominada VentanaPrincipal define una interfaz grafica con un
- * formulario y los botones Crear, Leer, Actualizar y Eliminar (CRUD) que operan
- * sobre un archivo de estudiantes a traves de la clase GestorArchivo. Los
- * estudiantes se muestran en una tabla.
- * @version 1.0/2026
- */
+// Ventana de la aplicacion: formulario con los botones Crear, Leer, Actualizar y
+// Eliminar (CRUD) que trabajan sobre el archivo por medio de GestorArchivo.
+// Los estudiantes se muestran en una tabla.
 public class VentanaPrincipal extends JFrame implements ActionListener, ListSelectionListener {
 
     Container contenedor;
@@ -25,7 +21,7 @@ public class VentanaPrincipal extends JFrame implements ActionListener, ListSele
     DefaultTableModel modelo;
     JScrollPane scroll;
 
-    GestorArchivo gestor; // Administrador de las operaciones sobre el archivo
+    GestorArchivo gestor;
 
     public VentanaPrincipal() {
         gestor = new GestorArchivo("estudiantes.txt");
@@ -85,6 +81,7 @@ public class VentanaPrincipal extends JFrame implements ActionListener, ListSele
         mensaje.setForeground(new Color(0, 100, 0));
         mensaje.setBounds(20, 125, 590, 23);
 
+        // Tabla donde se muestran los estudiantes
         modelo = new DefaultTableModel();
         modelo.addColumn("ID");
         modelo.addColumn("Nombre");
@@ -94,7 +91,7 @@ public class VentanaPrincipal extends JFrame implements ActionListener, ListSele
         scroll = new JScrollPane(tabla);
         scroll.setBounds(20, 155, 590, 265);
 
-        // Al seleccionar una fila, se cargan sus datos en el formulario
+        // Al seleccionar una fila se cargan sus datos en el formulario
         tabla.getSelectionModel().addListSelectionListener(this);
 
         contenedor.add(etId);
@@ -114,9 +111,7 @@ public class VentanaPrincipal extends JFrame implements ActionListener, ListSele
         contenedor.add(scroll);
     }
 
-    /**
-     * Carga en el formulario los datos de la fila seleccionada en la tabla.
-     */
+    // Cuando el usuario selecciona una fila, pasa esos datos al formulario
     @Override
     public void valueChanged(ListSelectionEvent evento) {
         int fila = tabla.getSelectedRow();
@@ -128,9 +123,7 @@ public class VentanaPrincipal extends JFrame implements ActionListener, ListSele
         }
     }
 
-    /**
-     * Refresca la tabla con los estudiantes almacenados en el archivo.
-     */
+    // Vuelve a llenar la tabla con lo que hay en el archivo
     private void refrescarTabla() throws IOException {
         modelo.setRowCount(0);
         ArrayList<Estudiante> lista = gestor.leer();

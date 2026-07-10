@@ -1,24 +1,12 @@
-/**
- * Esta clase denominada Estudiante modela un estudiante con un identificador, un
- * nombre, un programa academico y una edad. Ofrece metodos para convertir el
- * objeto a una linea de texto y para reconstruirlo desde una linea, lo que
- * permite almacenarlo y leerlo de un archivo.
- * @version 1.0/2026
- */
+// Clase Estudiante: guarda los datos de un estudiante (id, nombre, programa y edad).
+// Tambien pasa el objeto a texto para el archivo y lo vuelve a armar desde el archivo.
 public class Estudiante {
 
-    int id;          // Identificador unico del estudiante
-    String nombre;   // Nombre del estudiante
-    String programa; // Programa academico del estudiante
-    int edad;        // Edad del estudiante
+    int id;
+    String nombre;
+    String programa;
+    int edad;
 
-    /**
-     * Constructor de la clase Estudiante
-     * @param id Identificador del estudiante
-     * @param nombre Nombre del estudiante
-     * @param programa Programa academico del estudiante
-     * @param edad Edad del estudiante
-     */
     Estudiante(int id, String nombre, String programa, int edad) {
         this.id = id;
         this.nombre = nombre;
@@ -26,20 +14,12 @@ public class Estudiante {
         this.edad = edad;
     }
 
-    /**
-     * Convierte el estudiante a una linea de texto separada por comas para
-     * guardarlo en el archivo.
-     * @return Linea de texto con los datos del estudiante
-     */
+    // Pasa el estudiante a una linea separada por comas para guardarlo en el archivo
     String aLinea() {
         return id + "," + nombre + "," + programa + "," + edad;
     }
 
-    /**
-     * Crea un estudiante a partir de una linea de texto leida del archivo.
-     * @param linea Linea de texto con los datos separados por comas
-     * @return Objeto Estudiante reconstruido
-     */
+    // Arma un estudiante a partir de una linea leida del archivo
     static Estudiante desdeLinea(String linea) {
         String[] datos = linea.split(",");
         int id = Integer.parseInt(datos[0]);
