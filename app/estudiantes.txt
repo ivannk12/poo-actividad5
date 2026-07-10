@@ -1,0 +1,3 @@
+1,Ana Torres,Ingenieria de Sistemas,20
+2,Carlos Ruiz,Ingenieria Industrial,22
+3,Maria Gomez,Ingenieria de Minas,19
